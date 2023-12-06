@@ -8,16 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-/**
- * Student
- */
 @Data
 @Entity
-@Table(name = "tbl_student")
-public class Student {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long studentId;
+@Table(name = "users")
+public class User {
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 
   private String firstName;
 
@@ -31,5 +26,5 @@ public class Student {
 
   public String getEmail() { return email; }
 
-  public Long getStudentId() { return studentId; }
+  public Long getId() { return id; }
 }

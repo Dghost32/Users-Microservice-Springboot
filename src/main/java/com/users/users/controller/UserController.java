@@ -1,7 +1,8 @@
 package com.users.users.controller;
 
+import com.users.users.entity.User;
+import com.users.users.service.UserService;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,36 +14,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.users.users.entity.Student;
-import com.users.users.service.StudentService;
-
 @RestController
-@RequestMapping("/api/v1/students")
-public class StudentController {
-  @Autowired private StudentService studentService;
+@RequestMapping("/api/v1/users")
+public class UserController {
+  @Autowired private UserService userService;
 
   @GetMapping
-  public ResponseEntity<List<Student>> getAll() {
-    return studentService.getAll();
+  public ResponseEntity<List<User>> getAll() {
+    return userService.getAll();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Student> get(@PathVariable("id") Long id) {
-    return studentService.get(id);
+  public ResponseEntity<User> get(@PathVariable("id") Long id) {
+    return userService.get(id);
   }
 
   @PostMapping
-  public ResponseEntity<Student> add(@RequestBody Student student) {
-    return studentService.add(student);
+  public ResponseEntity<User> add(@RequestBody User user) {
+    return userService.add(user);
   }
 
   @PutMapping
-  public ResponseEntity<Student> update(@RequestBody Student student) {
-    return studentService.update(student);
+  public ResponseEntity<User> update(@RequestBody User user) {
+    return userService.update(user);
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Student> delete(@PathVariable("id") Long id) {
-    return studentService.delete(id);
+  public ResponseEntity<User> delete(@PathVariable("id") Long id) {
+    return userService.delete(id);
   }
 }
