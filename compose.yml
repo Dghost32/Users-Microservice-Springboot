@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  users-db:
+    image: mysql:latest
+    container_name: users-db
+    hostname: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: users 
+    restart: unless-stopped
+    volumes:
+      - mysql:/var/lib/mysql
+
+  app:
+    container_name: users-ms
+    ports:
+      - 8080:8080
+    build:
+      context: .
+    volumes:
+      - .:/app
+volumes:
+  mysql:
